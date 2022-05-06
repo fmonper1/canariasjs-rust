@@ -1,14 +1,21 @@
 fn main() {
-    static age: u32 = 90;
+    looper();
+}
 
-    let var = "Hello world";
-    let num = 32;
-    let num2 = 32u8;
+unsafe fn looper () {
+    println!("Count: {}", counter());
+    println!("Count: {}", counter());
 
-    // completeley different from JS's const
-    const NAME: &str = "CANARIASJS";
-    // at compile time usages of NAME get replaced by the value
-    // use const for values that can be determined at compile time
+    let mut num = counter();
+    *num = 3;
 
-    println!("Hello, world!");
+    println!("Count: {}", counter());
+    println!("Count: {}", counter());
+    println!("Count: {}", counter());
+}
+
+// fn counter() -> u32 {
+unsafe fn counter() -> &'static mut u32 {
+    static mut X: u32 = 0;
+    return &mut X;
 }
