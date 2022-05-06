@@ -1,17 +1,16 @@
 fn main() {
-    looper();
+    unsafe {
+
+        println!("Count: {}", counter());
+        println!("Count: {}", counter());
+
+        let mut num = counter();
+        *num = 3;
+
+        println!("Count: {}", counter());
+        println!("Count: {}", counter());
+        println!("Count: {}", counter());
 }
-
-unsafe fn looper () {
-    println!("Count: {}", counter());
-    println!("Count: {}", counter());
-
-    let mut num = counter();
-    *num = 3;
-
-    println!("Count: {}", counter());
-    println!("Count: {}", counter());
-    println!("Count: {}", counter());
 }
 
 // fn counter() -> u32 {
